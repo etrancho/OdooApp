@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- GRUPO GESTOR DE REGALOS -->
+        <record id="grupo_gestorR" model="res.groups">
+            <field name="name">Gestor de Regalos</field>
+            <field name="comment">Perfil gestor de acceso a los regalos</field>
+        </record>
+        <!-- GRUPO OPERARIO DE REGALOS -->
+        <record id="grupo_operarioR" model="res.groups">
+            <field name="name">Operario regalos</field>
+            <field name="comment">Perfil operario de acceso a los regalos</field>
+        </record>
+    </data>
+</odoo> 

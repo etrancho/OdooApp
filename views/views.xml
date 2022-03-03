@@ -1,0 +1,124 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="regalos.regalos_tree">
+      <field name="name">regalos.tree</field>
+      <field name="model">regalos.regalos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id" />
+          <field name="name" />
+          <field name="description"/>
+          <field name="tienda" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="regalos.regalos_form">
+      <field name="name">regalos.form</field>
+      <field name="model">regalos.regalos</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="id" />
+            <field name="tienda" />
+            <field name="name" />
+            <field name="description" />
+            <field name="imagen" widget="image" height="120px" 
+            width="120px" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="regalos.tienda_tree">
+      <field name="name">regalos.tienda.tree</field>
+      <field name="model">regalos.tienda</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="direccion" />
+          <field name="regalos" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="regalos.tienda_form">
+      <field name="name">regalos.tienda.form</field>
+      <field name="model">regalos.tienda</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name" />
+            <field name="direccion" />
+            <field name="regalos" groups="regalos.grupo_operarioR"/>
+          </group>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <!-- <record id="res_partner_view_form_inherit_regalos" model="ir.ui.view">
+      <field name="name">res.partner.view.form.inherit.regalos</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form" />
+      <field name="arch" type="xml">
+        <xpath expr="//page[@name='internal_notes']" position="after">
+          <pade string="Regalos" name="Ficha_regalos_tienda">
+            <field name="regalos">
+              <tree>
+                <field name="id" />
+                <field name="tienda" />
+                <field name="nombre" />
+                <field name="description" />
+                <field name="imagen" />
+              </tree>
+            </field>
+          </pade>
+        </xpath>
+      </field>
+    </record> -->
+
+    <record model="ir.actions.act_window" id="regalos.regalos_action_window">
+      <field name="name">regalos</field>
+      <field name="res_model">regalos.regalos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="regalos.tienda_action_window">
+      <field name="name">tienda</field>
+      <field name="res_model">regalos.tienda</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="regalos.action_server">
+      <field name="name">regalos server</field>
+      <field name="model_id" ref="model_regalos_regalos"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+    <!-- menú principal-->
+    <menuitem name="regalos" id="regalos.menu_root" />
+    <!-- submenú-->
+    <menuitem name="Regalos" id="regalos.regalos_menu" parent="regalos.menu_root" action="regalos.regalos_action_window" />
+    <menuitem name="Tiendas" id="regalos.tienda_menu" parent="regalos.menu_root" action="regalos.tienda_action_window" />
+    <!-- opciones menú-->
+    <!-- <menuitem name="regalos" id="regalos.regalos_menu_regalos" parent="regalos.regalos_menu" 
+      action="regalos.regalos_action_window" />
+    <menuitem name="tienda" id="regalos.regalos_menu_tienda" parent="regalos.regalos_menu" 
+      action="regalos.tienda_action_window" /> -->
+
+  </data>
+</odoo>
